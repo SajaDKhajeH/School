@@ -3,15 +3,15 @@ Microsoft Visual Studio Solution File, Format Version 12.00
 # Visual Studio Version 17
 VisualStudioVersion = 17.4.33403.182
 MinimumVisualStudioVersion = 10.0.40219.1
-Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "Schoool", "Schoool\Schoool.csproj", "{F61CE895-1A74-4A64-BDB9-EB3C4746631D}"
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "School.WinForms", "Schoool\School.WinForms.csproj", "{F61CE895-1A74-4A64-BDB9-EB3C4746631D}"
 EndProject
 Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "WebApplication1", "WebApplication1\WebApplication1.csproj", "{E1A01C2D-DEBB-4A02-A675-0A7DDFAFB1D1}"
 EndProject
 Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "School.DataAccess", "School.DataAccess\School.DataAccess.csproj", "{6FF7BD94-6188-452A-9B51-10207A6BB59D}"
 EndProject
-Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "Models", "Models\Models.csproj", "{48695AD1-8E8D-4D6A-BDCB-70DE28F6A7ED}"
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "School.Models", "Models\School.Models.csproj", "{48695AD1-8E8D-4D6A-BDCB-70DE28F6A7ED}"
 EndProject
-Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "BLL", "BLL\BLL.csproj", "{4FDF1387-1727-456C-964C-DE911623C407}"
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "School.BLL", "BLL\School.BLL.csproj", "{4FDF1387-1727-456C-964C-DE911623C407}"
 EndProject
 Global
 	GlobalSection(SolutionConfigurationPlatforms) = preSolution

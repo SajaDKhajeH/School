@@ -113,13 +113,13 @@
     <None Include="App.config" />
   </ItemGroup>
   <ItemGroup>
-    <ProjectReference Include="..\BLL\BLL.csproj">
+    <ProjectReference Include="..\BLL\School.BLL.csproj">
       <Project>{4fdf1387-1727-456c-964c-de911623c407}</Project>
-      <Name>BLL</Name>
+      <Name>School.BLL</Name>
     </ProjectReference>
-    <ProjectReference Include="..\Models\Models.csproj">
+    <ProjectReference Include="..\Models\School.Models.csproj">
       <Project>{48695ad1-8e8d-4d6a-bdcb-70de28f6a7ed}</Project>
-      <Name>Models</Name>
+      <Name>School.Models</Name>
     </ProjectReference>
     <ProjectReference Include="..\School.DataAccess\School.DataAccess.csproj">
       <Project>{6ff7bd94-6188-452a-9b51-10207a6bb59d}</Project>
