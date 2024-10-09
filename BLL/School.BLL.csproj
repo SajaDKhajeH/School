@@ -44,15 +44,5 @@
     <Compile Include="Properties\AssemblyInfo.cs" />
     <Compile Include="Student.cs" />
   </ItemGroup>
-  <ItemGroup>
-    <ProjectReference Include="..\Models\School.Models.csproj">
-      <Project>{48695AD1-8E8D-4D6A-BDCB-70DE28F6A7ED}</Project>
-      <Name>School.Models</Name>
-    </ProjectReference>
-    <ProjectReference Include="..\School.DataAccess\School.DataAccess.csproj">
-      <Project>{6ff7bd94-6188-452a-9b51-10207a6bb59d}</Project>
-      <Name>School.DataAccess</Name>
-    </ProjectReference>
-  </ItemGroup>
   <Import Project="$(MSBuildToolsPath)\Microsoft.CSharp.targets" />
 </Project>

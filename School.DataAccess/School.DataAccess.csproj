@@ -60,11 +60,5 @@
       <LastGenOutput>Settings.Designer.cs</LastGenOutput>
     </None>
   </ItemGroup>
-  <ItemGroup>
-    <ProjectReference Include="..\Models\School.Models.csproj">
-      <Project>{48695ad1-8e8d-4d6a-bdcb-70de28f6a7ed}</Project>
-      <Name>School.Models</Name>
-    </ProjectReference>
-  </ItemGroup>
   <Import Project="$(MSBuildToolsPath)\Microsoft.CSharp.targets" />
 </Project>
