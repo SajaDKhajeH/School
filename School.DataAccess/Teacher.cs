@@ -10,7 +10,7 @@ namespace School.DataAccess
 {
     public sealed class Teacher : DbSqlCommands
     {
-        public string Insert(string firstName, string lastName, string mobile)
+        public OperationResult Insert(string firstName, string lastName, string mobile)
         {
             return ExcuteProc("InsertStudent", new SqlParameter[]
             {
@@ -19,11 +19,11 @@ namespace School.DataAccess
                 new SqlParameter("@Mobile",mobile),
             });
         }
-        public string Update()
+        public OperationResult Update()
         {
             return ExcuteProc("UpdateStudent");
         }
-        public string Delete()
+        public OperationResult Delete()
         {
             return ExcuteProc("DeleteStudent");
         }

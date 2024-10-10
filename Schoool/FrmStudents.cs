@@ -28,11 +28,14 @@ namespace Schoool
         private void FillDGV()
         {
             Student st = new Student();
-            string msg = "";
-            dataGridView1.DataSource = st.GetData(ref msg);
-            if (!string.IsNullOrEmpty(msg))
+            var result = st.GetData();
+            if (result.Success)
             {
-                MessageBox.Show(msg);
+                dataGridView1.DataSource = result.Data;
+            }
+            else
+            {
+                MessageBox.Show(result.Message);
             }
         }
 

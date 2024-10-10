@@ -10,39 +10,43 @@ namespace School.DataAccess
 {
     public sealed class Student : DbSqlCommands
     {
-        public DataTable GetData(ref string msg)
+        public OperationResult<DataTable> GetData()
         {
-            SqlConnection con = new SqlConnection(Connections.SchoolCS);
-            DataTable dataTable = new DataTable();
-            SqlCommand cmd = new SqlCommand();
-            cmd.Connection = con;
-            cmd.CommandText = "SelectStudents";
-            cmd.CommandType = CommandType.StoredProcedure;
-            //cmd.Parameters.AddWithValue("@Search", txtSearch.Text);
-            SqlDataAdapter sqlDataAdapter = new SqlDataAdapter(cmd);
-            try
-            {
-                con.Open();
-                sqlDataAdapter.Fill(dataTable);
-                con.Close();
-            }
-            catch (Exception ex)
-            {
-                ex.AddLog();
-                msg = "خطا در دریافت اطلاعات از سرور";
-            }
-            return dataTable;
+            return SelectDataTable("SelectStudents");
         }
 
-        public string Insert()
+        public OperationResult<bool> CheckMobileExists(string mobile)
         {
-            return ExcuteProc("InsertStudent");
+            return SelectFunc("dbo.CheckExistsMobileNumber", new SqlParameter[]
+                {
+                    new SqlParameter("@MobileNumber", mobile)
+                });
         }
-        public string Update()
+
+
+        public OperationResult Insert(string firstName, string lastName, string mobile)
+        {
+            var existsMobileResult = CheckMobileExists(mobile);
+            if (!existsMobileResult.Success)
+            {
+                return existsMobileResult;
+            }
+            if (existsMobileResult.Data)
+            {
+                return existsMobileResult;
+            }
+            return ExcuteProc("InsertStudent", new SqlParameter[]
+            {
+                new SqlParameter("@FirstName",firstName),
+                new SqlParameter("@LastName",lastName),
+                new SqlParameter("@Mobile",mobile),
+            });
+        }
+        public OperationResult Update()
         {
             return ExcuteProc("UpdateStudent");
         }
-        public string Delete()
+        public OperationResult Delete()
         {
             return ExcuteProc("DeleteStudent");
         }
