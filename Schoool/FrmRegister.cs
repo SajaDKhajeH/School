@@ -1,4 +1,5 @@
-﻿using System;
+﻿using School.BLL;
+using System;
 using System.Collections.Generic;
 using System.ComponentModel;
 using System.Data;
@@ -21,12 +22,22 @@ namespace Schoool
         private void button1_Click(object sender, EventArgs e)
         {
             FrmStudent frm = new FrmStudent();
-            frm.StudentInserted += Frm_StudentInserted;
+            //frm.StudentInserted += Frm_StudentInserted; ;
+            frm.Show();
         }
 
-        private void Frm_StudentInserted(School.BLL.StudentDto studentDto)
+        private void Frm_StudentInserted(object sender, EventArgs e)
         {
-            button1.Text = studentDto.FirstName + " ثبت شد ";
+            var studentDto = sender as StudentDto;
+            if (studentDto != null)
+            {
+                button1.Text = studentDto.FirstName + " ثبت شد ";
+            }
         }
+
+        //private void Frm_StudentInserted(School.BLL.StudentDto studentDto)
+        //{
+        //    button1.Text = studentDto.FirstName + " ثبت شد ";
+        //}
     }
 }

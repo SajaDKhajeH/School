@@ -13,8 +13,10 @@ namespace Schoool
 {
     public partial class FrmStudent : Form
     {
-        public delegate void StudentInsertedHandler(StudentDto studentDto);
-        public event StudentInsertedHandler StudentInserted;
+        //public delegate void StudentInsertedHandler(StudentDto studentDto);
+        public event EventHandler StudentInserted;
+        public event Action<StudentDto,int> StudentUpdated;
+
         public FrmStudent()
         {
             InitializeComponent();
@@ -32,7 +34,11 @@ namespace Schoool
             var result = st.Insert(data);
             if (result.Success)
             {
-                StudentInserted(data);
+                //if (StudentInserted != null)
+                //{
+                //    StudentInserted(data, null);
+                //}
+                StudentInserted?.Invoke(data, null);
             }
             ShowToast(result.Message, result.Success);
         }

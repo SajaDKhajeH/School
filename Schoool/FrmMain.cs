@@ -27,5 +27,10 @@ namespace Schoool
         {
           
         }
+
+        private void btnRegister_Click(object sender, EventArgs e)
+        {
+            new FrmRegister().Show();   
+        }
     }
 }
