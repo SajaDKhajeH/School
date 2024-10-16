@@ -1,4 +1,4 @@
-﻿using School.DataAccess;
+﻿using School.BLL;
 using System;
 using System.Collections.Generic;
 using System.ComponentModel;
@@ -13,6 +13,8 @@ namespace Schoool
 {
     public partial class FrmStudent : Form
     {
+        public delegate void StudentInsertedHandler(StudentDto studentDto);
+        public event StudentInsertedHandler StudentInserted;
         public FrmStudent()
         {
             InitializeComponent();
@@ -21,9 +23,20 @@ namespace Schoool
         private void btnSubmit_Click(object sender, EventArgs e)
         {
             Student st = new Student();
-            var result = st.Insert(txtName.Text, txtLastName.Text, txtMobile.Text);
+            var data = new StudentDto
+            {
+                FirstName = txtName.Text,
+                Mobile = txtMobile.Text,
+                LastName = txtLastName.Text
+            };
+            var result = st.Insert(data);
+            if (result.Success)
+            {
+                StudentInserted(data);
+            }
             ShowToast(result.Message, result.Success);
         }
+
 
         private void ShowToast(string message, bool success)
         {

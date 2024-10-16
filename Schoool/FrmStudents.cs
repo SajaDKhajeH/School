@@ -42,7 +42,13 @@ namespace Schoool
         private void button1_Click(object sender, EventArgs e)
         {
             FrmStudent frm = new FrmStudent();
+            frm.StudentInserted += Frm_StudentInserted;
             frm.ShowDialog();
+            FillDGV();
+        }
+
+        private void Frm_StudentInserted(School.BLL.StudentDto studentDto)
+        {
             FillDGV();
         }
 

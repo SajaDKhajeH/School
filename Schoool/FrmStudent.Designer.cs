@@ -99,9 +99,9 @@
             // lblToast
             // 
             this.lblToast.Dock = System.Windows.Forms.DockStyle.Bottom;
-            this.lblToast.Location = new System.Drawing.Point(0, 159);
+            this.lblToast.Location = new System.Drawing.Point(0, 227);
             this.lblToast.Name = "lblToast";
-            this.lblToast.Size = new System.Drawing.Size(260, 20);
+            this.lblToast.Size = new System.Drawing.Size(260, 92);
             this.lblToast.TabIndex = 5;
             this.lblToast.TextAlign = System.Drawing.ContentAlignment.MiddleCenter;
             // 
@@ -109,7 +109,7 @@
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(6F, 13F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
-            this.ClientSize = new System.Drawing.Size(260, 179);
+            this.ClientSize = new System.Drawing.Size(260, 319);
             this.Controls.Add(this.lblToast);
             this.Controls.Add(this.btnSubmit);
             this.Controls.Add(this.label3);

@@ -5,6 +5,7 @@ using System.Data;
 using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
+using School.BLL;
 
 namespace School.DataAccess
 {
@@ -24,22 +25,13 @@ namespace School.DataAccess
         }
 
 
-        public OperationResult Insert(string firstName, string lastName, string mobile)
+        public OperationResult Insert(StudentDto studentDto)
         {
-            var existsMobileResult = CheckMobileExists(mobile);
-            if (!existsMobileResult.Success)
-            {
-                return existsMobileResult;
-            }
-            if (existsMobileResult.Data)
-            {
-                return existsMobileResult;
-            }
             return ExcuteProc("InsertStudent", new SqlParameter[]
             {
-                new SqlParameter("@FirstName",firstName),
-                new SqlParameter("@LastName",lastName),
-                new SqlParameter("@Mobile",mobile),
+                new SqlParameter("@FirstName",studentDto.FirstName),
+                new SqlParameter("@LastName",studentDto.LastName),
+                new SqlParameter("@Mobile",studentDto.Mobile),
             });
         }
         public OperationResult Update()

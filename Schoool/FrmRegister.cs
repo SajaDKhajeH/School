@@ -1,5 +1,4 @@
-﻿using School.DataAccess;
-using System;
+﻿using System;
 using System.Collections.Generic;
 using System.ComponentModel;
 using System.Data;
@@ -11,21 +10,23 @@ using System.Windows.Forms;
 
 namespace Schoool
 {
-    public partial class FrmMain : Form
+    public partial class FrmRegister : Form
     {
-        public FrmMain()
+        public FrmRegister()
         {
             InitializeComponent();
         }
 
+
         private void button1_Click(object sender, EventArgs e)
         {
-            new FrmStudents().Show();
+            FrmStudent frm = new FrmStudent();
+            frm.StudentInserted += Frm_StudentInserted;
         }
 
-        private void FrmMain_Load(object sender, EventArgs e)
+        private void Frm_StudentInserted(School.BLL.StudentDto studentDto)
         {
-          
+            button1.Text = studentDto.FirstName + " ثبت شد ";
         }
     }
 }

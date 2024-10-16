@@ -67,6 +67,12 @@
     <Compile Include="FrmMain.Designer.cs">
       <DependentUpon>FrmMain.cs</DependentUpon>
     </Compile>
+    <Compile Include="FrmRegister.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="FrmRegister.Designer.cs">
+      <DependentUpon>FrmRegister.cs</DependentUpon>
+    </Compile>
     <Compile Include="FrmStudent.cs">
       <SubType>Form</SubType>
     </Compile>
@@ -83,6 +89,9 @@
     <Compile Include="Properties\AssemblyInfo.cs" />
     <EmbeddedResource Include="FrmMain.resx">
       <DependentUpon>FrmMain.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="FrmRegister.resx">
+      <DependentUpon>FrmRegister.cs</DependentUpon>
     </EmbeddedResource>
     <EmbeddedResource Include="FrmStudent.resx">
       <DependentUpon>FrmStudent.cs</DependentUpon>
@@ -113,9 +122,17 @@
     <None Include="App.config" />
   </ItemGroup>
   <ItemGroup>
+    <ProjectReference Include="..\School.BLL\School.BLL.csproj">
+      <Project>{74f41984-7ae0-4723-9438-4c7ccd438fc2}</Project>
+      <Name>School.BLL</Name>
+    </ProjectReference>
     <ProjectReference Include="..\School.DataAccess\School.DataAccess.csproj">
       <Project>{6ff7bd94-6188-452a-9b51-10207a6bb59d}</Project>
       <Name>School.DataAccess</Name>
+    </ProjectReference>
+    <ProjectReference Include="..\School.Model\School.Model.csproj">
+      <Project>{249e360b-f916-4d01-a479-2947d0e45aef}</Project>
+      <Name>School.Model</Name>
     </ProjectReference>
   </ItemGroup>
   <ItemGroup>
