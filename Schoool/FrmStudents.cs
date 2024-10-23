@@ -42,36 +42,20 @@ namespace Schoool
         private void button1_Click(object sender, EventArgs e)
         {
             FrmStudent frm = new FrmStudent();
-            frm.StudentInserted += Frm_StudentInserted;
-            frm.StudentUpdated += Frm_StudentUpdated1;        
+            frm.Inserted += Frm_Inserted;
             frm.ShowDialog();
             FillDGV();
         }
+
+        private void Frm_Inserted(School.BLL.StudentDto obj)
+        {
+            FillDGV();
+        }
+
         string aaa(int z)
         {
             return "";
         }
-        private void Frm_StudentUpdated1(School.BLL.StudentDto arg1, int arg2)
-        {
-            Func<int, string> a = new Func<int, string>(aaa);
-
-            throw new NotImplementedException();
-        }
-
-        private void Frm_StudentUpdated(School.BLL.StudentDto obj)
-        {
-            throw new NotImplementedException();
-        }
-
-        private void Frm_StudentInserted(object sender, EventArgs e)
-        {
-            FillDGV();
-        }
-
-        //private void Frm_StudentInserted(School.BLL.StudentDto studentDto)
-        //{
-        //    FillDGV();
-        //}
 
         private void txtSearch_TextChanged(object sender, EventArgs e)
         {
