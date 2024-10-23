@@ -13,7 +13,7 @@ namespace School.Model
         {
             string mobile = value.ToString();
 
-            if (string.IsNullOrEmpty(mobile))
+            if (string.IsNullOrWhiteSpace(mobile))
             {
                 ErrorMessage = "شماره موبایل اجباری است";
                 return false;
@@ -22,6 +22,14 @@ namespace School.Model
             {
                 ErrorMessage = "شماره موبایل نامعتبر است";
                 return false;
+            }
+            foreach (char c in mobile)
+            {
+                if (!char.IsDigit(c))
+                {
+                    ErrorMessage = "شماره موبایل نامعتبر است";
+                    return false;
+                }
             }
             return true;
         }

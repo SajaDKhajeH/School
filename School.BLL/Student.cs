@@ -22,11 +22,11 @@ namespace School.BLL
             //{
             //    return valid;
             //}
-            if (!studentDto.IsValid)
+            if (!studentDto.IsValid(studentDto))
             {
                 return new OperationResult
                 {
-                    Message = studentDto.ErrorMessage
+                    Message = studentDto.ErrorMessages
                 };
             }
             var existsMobileResult = student.CheckMobileExists(studentDto.Mobile);
