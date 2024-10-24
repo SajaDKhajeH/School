@@ -9,7 +9,7 @@ using System.Threading.Tasks;
 
 namespace School.BLL
 {
-    public class StudentDto
+    public class StudentDto : BaseValidation
     {
         [Required(ErrorMessage = "نام اجباری است")]
         [MinLength(1, ErrorMessage = "حداقل یک کارکتر")]
@@ -21,29 +21,5 @@ namespace School.BLL
         public string LastName { get; set; }
         [MobileValidation]
         public string Mobile { get; set; }
-        List<ValidationResult> results;
-        public bool IsValid
-        {
-            get
-            {
-                var context = new ValidationContext(this);
-                results = new List<ValidationResult>();
-                bool isValid = Validator.TryValidateObject(this, context, results, true);
-                return isValid;
-            }
-        }
-        public string ErrorMessage
-        {
-            get
-            {
-                string errors = "";
-                foreach (var item in results)
-                {
-                    errors += item.ErrorMessage;
-                    errors += Environment.NewLine;
-                }
-                return errors;
-            }
-        }
     }
 }

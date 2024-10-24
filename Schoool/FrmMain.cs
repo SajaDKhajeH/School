@@ -25,12 +25,30 @@ namespace Schoool
 
         private void FrmMain_Load(object sender, EventArgs e)
         {
-          
+            string[] branches = new string[]
+            {
+                "شعبه اول",
+                "شعبه دوم",
+                "شعبه سوم"
+            };
+            cmbBranch.SelectedIndexChanged -= comboBox1_SelectedIndexChanged;
+            cmbBranch.DataSource = branches.ToList();
+            cmbBranch.SelectedIndexChanged += new EventHandler(comboBox1_SelectedIndexChanged);
         }
 
         private void btnRegister_Click(object sender, EventArgs e)
         {
-            new FrmRegister().Show();   
+            new FrmRegister().Show();
+        }
+
+        private void comboBox1_SelectedIndexChanged(object sender, EventArgs e)
+        {
+            MessageBox.Show(cmbBranch.Text);
+        }
+
+        private void btnLessons_Click(object sender, EventArgs e)
+        {
+            new FrmLessons().Show();
         }
     }
 }

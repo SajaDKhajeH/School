@@ -42,6 +42,8 @@
     <Reference Include="System.Xml" />
   </ItemGroup>
   <ItemGroup>
+    <Compile Include="BaseValidation.cs" />
+    <Compile Include="LessonDto.cs" />
     <Compile Include="MobileValidationAttribute.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
     <Compile Include="StudentDto.cs" />

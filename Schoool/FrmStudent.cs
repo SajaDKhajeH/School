@@ -16,7 +16,7 @@ namespace Schoool
         //public delegate void StudentInsertedHandler(StudentDto studentDto);
         public event EventHandler StudentInserted;
         public event Action<StudentDto,int> StudentUpdated;
-
+        public Action OnStudentInserted;
         public FrmStudent()
         {
             InitializeComponent();
@@ -38,7 +38,8 @@ namespace Schoool
                 //{
                 //    StudentInserted(data, null);
                 //}
-                StudentInserted?.Invoke(data, null);
+                //StudentInserted?.Invoke(data, null);
+                OnStudentInserted();
             }
             ShowToast(result.Message, result.Success);
         }
@@ -51,7 +52,6 @@ namespace Schoool
                 lblToast.ForeColor = Color.Green;
             else
                 lblToast.ForeColor = Color.Red;
-
         }
     }
 }

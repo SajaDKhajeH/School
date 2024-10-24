@@ -43,7 +43,8 @@ namespace Schoool
         {
             FrmStudent frm = new FrmStudent();
             frm.StudentInserted += Frm_StudentInserted;
-            frm.StudentUpdated += Frm_StudentUpdated1;        
+            frm.StudentUpdated += Frm_StudentUpdated1;
+            frm.OnStudentInserted = FillDGV;
             frm.ShowDialog();
             FillDGV();
         }
