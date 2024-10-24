@@ -24,13 +24,16 @@ namespace School.Model
         {
             get
             {
-                string errors = "";
+                //string errors = "";
+                StringBuilder sb = new StringBuilder(); 
                 foreach (var item in results)
                 {
-                    errors += item.ErrorMessage;
-                    errors += Environment.NewLine;
+                    //errors += item.ErrorMessage;
+                    //errors += Environment.NewLine;
+                    sb.AppendLine(item.ErrorMessage);
+                    //string b = $"{txt1.text} {txt2.text}";
                 }
-                return errors;
+                return sb.ToString();
             }
         }
     }
