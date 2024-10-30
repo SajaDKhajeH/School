@@ -13,6 +13,14 @@ Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "School.BLL", "School.BLL\Sc
 EndProject
 Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "School.Model", "School.Model\School.Model.csproj", "{249E360B-F916-4D01-A479-2947D0E45AEF}"
 EndProject
+Project("{2150E333-8FDC-42A3-9474-1A3956D46DE8}") = "document", "document", "{8A49BC67-616C-46FF-8B06-7B2A416AA912}"
+EndProject
+Project("{2150E333-8FDC-42A3-9474-1A3956D46DE8}") = "wireframes", "wireframes", "{94CFE01F-8B74-4892-9CC7-B8D689DA2673}"
+	ProjectSection(SolutionItems) = preProject
+		D:\Company\academy\Files\Project\Sketch\Dashboard.jpeg = D:\Company\academy\Files\Project\Sketch\Dashboard.jpeg
+		D:\Company\academy\Files\Project\Sketch\Manage user.jpeg = D:\Company\academy\Files\Project\Sketch\Manage user.jpeg
+	EndProjectSection
+EndProject
 Global
 	GlobalSection(SolutionConfigurationPlatforms) = preSolution
 		Debug|Any CPU = Debug|Any CPU
@@ -42,6 +50,9 @@ Global
 	EndGlobalSection
 	GlobalSection(SolutionProperties) = preSolution
 		HideSolutionNode = FALSE
+	EndGlobalSection
+	GlobalSection(NestedProjects) = preSolution
+		{94CFE01F-8B74-4892-9CC7-B8D689DA2673} = {8A49BC67-616C-46FF-8B06-7B2A416AA912}
 	EndGlobalSection
 	GlobalSection(ExtensibilityGlobals) = postSolution
 		SolutionGuid = {85A96858-3A6D-462F-8DDC-FEA36D6A1B13}
