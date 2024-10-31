@@ -52,14 +52,14 @@ namespace Schoool
         {
             return "";
         }
-        private void Frm_StudentUpdated1(School.BLL.StudentDto arg1, int arg2)
+        private void Frm_StudentUpdated1(School.Model.StudentDto arg1, int arg2)
         {
             Func<int, string> a = new Func<int, string>(aaa);
 
             throw new NotImplementedException();
         }
 
-        private void Frm_StudentUpdated(School.BLL.StudentDto obj)
+        private void Frm_StudentUpdated(School.Model.StudentDto obj)
         {
             throw new NotImplementedException();
         }
