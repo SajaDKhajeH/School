@@ -31,6 +31,7 @@ namespace Schoool
                 Mobile = txtMobile.Text,
                 LastName = txtLastName.Text
             };
+            st.InsertEF(data);
             var result = st.Insert(data);
             if (result.Success)
             {

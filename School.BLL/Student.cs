@@ -15,6 +15,12 @@ namespace School.BLL
         {
             student = new DataAccess.Student();
         }
+        public OperationResult InsertEF(StudentDto studentDto)
+        {
+            student.I();
+          
+            return new OperationResult();
+        }
         public OperationResult Insert(StudentDto studentDto)
         {
             //var valid = IsValid(studentDto);

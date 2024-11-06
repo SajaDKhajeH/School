@@ -26,15 +26,15 @@ namespace Schoool
 
         private void FrmMain_Load(object sender, EventArgs e)
         {
-            string[] branches = new string[]
-            {
-                "شعبه اول",
-                "شعبه دوم",
-                "شعبه سوم"
-            };
-            cmbBranch.SelectedIndexChanged -= comboBox1_SelectedIndexChanged;
-            cmbBranch.DataSource = branches.ToList();
-            cmbBranch.SelectedIndexChanged += new EventHandler(comboBox1_SelectedIndexChanged);
+            //string[] branches = new string[]
+            //{
+            //    "شعبه اول",
+            //    "شعبه دوم",
+            //    "شعبه سوم"
+            //};
+            //cmbBranch.SelectedIndexChanged -= comboBox1_SelectedIndexChanged;
+            //cmbBranch.DataSource = branches.ToList();
+            //cmbBranch.SelectedIndexChanged += new EventHandler(comboBox1_SelectedIndexChanged);
         }
 
         private void btnRegister_Click(object sender, EventArgs e)
@@ -156,6 +156,87 @@ namespace Schoool
 
 
         }
+
+        private void button4_Click(object sender, EventArgs e)
+        {
+            var students = StudentDto.GetStudents();
+
+            foreach (var student in students)
+            {
+                foreach (var lesson in student.Lessons)
+                {
+                    cmbBranch.Items.Add(lesson);
+                }
+            }
+
+            students.ForEach(s => s.Lessons.ToList().ForEach(l => cmbBranch.Items.Add(l)));
+
+            cmbBranch.Items.AddRange(students.SelectMany(x => x.Lessons).ToArray());
+
+            int a = 5;
+            int? xx = null;
+
+
+
+
+            string aaaa = null;
+
+            List<int> numbers = new List<int>();
+
+            //numbers.Add(null);
+
+            var aa = numbers.Max();
+
+            // Console.WriteLine(aa ?? 10);
+        }
+
+        private void txtDiscount_KeyPress(object sender, KeyPressEventArgs e)
+        {
+            if (e.KeyChar == (char)Keys.Enter)
+            {
+                double price = 1_000_000;
+                double? discount = null;
+                if (txtDiscount.Text != "")
+                {
+                    if (txtDiscount.Text == "takh")
+                    {
+                        discount = 1000;
+                    }
+                }
+                //double notNullDiscount = 0;
+                //if (discount.HasValue)
+                //    notNullDiscount = discount.Value;
+                //double a = discount == null ? 0 : discount.Value;
+                double finalPrice = price - (discount ?? 0);
+
+                MessageBox.Show($"مبلغ نهایی {finalPrice}");
+
+                List<string> men = new List<string>()
+                {
+                    "ali","reza","nosrat","solat","mahan","sajad"
+                };
+                List<string> women = new List<string>()
+                {
+                    "fateme","nosrat","solat","kosar","mahan"
+                };
+
+                var concated = men.Concat(women);
+
+                var unioned = men.Union(women);
+
+                var inter = men.Intersect(women);
+
+                var exce = men.Except(women);
+
+
+                MessageBox.Show($"مبلغ نهایی {finalPrice}");
+
+            }
+        }
+
+
+
+
         //bool WhereFard(int num)
         //{
         //    if ((num % 2) == 0)
