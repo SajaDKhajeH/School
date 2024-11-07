@@ -2,6 +2,7 @@
 using School.Model;
 using School.Model.DTO;
 using School.Model.Entities;
+using School.Model.Student;
 using System;
 using System.Collections.Generic;
 using System.Data.SqlClient;
@@ -18,7 +19,7 @@ namespace School.BLL
         {
             studentRepository = new StudentRepository();
         }
-        public OperationResult Insert(StudentDto studentDto)
+        public OperationResult Insert(CreateStudentModel studentDto)
         {
             if (!studentDto.IsValid)
             {
@@ -45,9 +46,15 @@ namespace School.BLL
             studentRepository.Insert(student);
             return new OperationResult { Success = true };
         }
-        public List<Student> GetData()
+        public List<StudentVM> GetData()
         {
             return studentRepository.GetData();
+        }
+
+        public OperationResult Delete(int id)
+        {
+            studentRepository.Delete(id);
+            return new OperationResult { Success = true };
         }
     }
 }

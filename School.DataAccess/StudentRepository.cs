@@ -1,5 +1,6 @@
 ﻿using School.Model.DTO;
 using School.Model.Entities;
+using School.Model.Student;
 using System;
 using System.Collections.Generic;
 using System.Linq;
@@ -19,12 +20,26 @@ namespace School.DataAccess
 
         public bool CheckMobileExists(string mobile)
         {
-            return db.Students.Any(x => x.Mobile == mobile);
+            return db.Students.Where(x => x.Deleted == false && x.Mobile == mobile).Any();
         }
 
-        public List<Student> GetData()
+        public List<StudentVM> GetData()
         {
-            return db.Students.ToList();
+            return db.Students.Where(x => x.Deleted == false).Select(x => new StudentVM
+            {
+                FirstName = x.FirstName,
+                Id = x.Id,
+                LastName = x.LastName,
+                Mobile = x.Mobile
+            }).ToList();
+        }
+
+        public void Delete(int id)
+        {
+            var student = db.Students.Where(x => x.Id == id).Single();
+            student.Deleted = true;
+            student.DeleteTime = DateTime.Now;
+            db.SaveChanges();
         }
     }
 }

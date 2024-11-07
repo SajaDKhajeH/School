@@ -8,5 +8,7 @@ namespace School.Model.Entities
         public int StudentId { get; set; }
         public int ClassId { get; set; }
         public DateTime RegisterDate { get; set; }
+        public Student Student { get; set; }
+        public Class Class { get; set; }
     }
 }

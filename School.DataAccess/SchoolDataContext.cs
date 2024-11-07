@@ -13,6 +13,10 @@ namespace School.DataAccess
         public SchoolDataContext() : base("Data Source=.;Initial Catalog=DbSchoolHonarestan;Integrated Security=True")
         {
         }
+        protected override void OnModelCreating(DbModelBuilder modelBuilder)
+        {
+            base.OnModelCreating(modelBuilder);
+        }
         public DbSet<Class> Classes { get; set; }
         public DbSet<Lesson> Lessons { get; set; }
         public DbSet<Student> Students { get; set; }

@@ -16,7 +16,7 @@ namespace Schoool
     {
         //public delegate void StudentInsertedHandler(StudentDto studentDto);
         public event EventHandler StudentInserted;
-        public event Action<StudentDto,int> StudentUpdated;
+        public event Action<CreateStudentModel,int> StudentUpdated;
         public Action OnStudentInserted;
         public FrmStudent()
         {
@@ -26,7 +26,7 @@ namespace Schoool
         private void btnSubmit_Click(object sender, EventArgs e)
         {
             StudentService st = new StudentService();
-            var data = new StudentDto
+            var data = new CreateStudentModel
             {
                 FirstName = txtName.Text,
                 Mobile = txtMobile.Text,
