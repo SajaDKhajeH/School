@@ -1,4 +1,5 @@
 ﻿using School.BLL;
+using School.Model.DTO;
 using System;
 using System.Collections.Generic;
 using System.ComponentModel;
@@ -24,22 +25,16 @@ namespace Schoool
 
         private void btnSubmit_Click(object sender, EventArgs e)
         {
-            Student st = new Student();
+            StudentService st = new StudentService();
             var data = new StudentDto
             {
                 FirstName = txtName.Text,
                 Mobile = txtMobile.Text,
                 LastName = txtLastName.Text
             };
-            st.InsertEF(data);
             var result = st.Insert(data);
             if (result.Success)
             {
-                //if (StudentInserted != null)
-                //{
-                //    StudentInserted(data, null);
-                //}
-                //StudentInserted?.Invoke(data, null);
                 OnStudentInserted();
             }
             ShowToast(result.Message, result.Success);

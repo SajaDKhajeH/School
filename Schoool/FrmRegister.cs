@@ -28,11 +28,11 @@ namespace Schoool
 
         private void Frm_StudentInserted(object sender, EventArgs e)
         {
-            var studentDto = sender as StudentDto;
-            if (studentDto != null)
-            {
-                button1.Text = studentDto.FirstName + " ثبت شد ";
-            }
+            //var studentDto = sender as StudentDto;
+            //if (studentDto != null)
+            //{
+            //    button1.Text = studentDto.FirstName + " ثبت شد ";
+            //}
         }
 
         //private void Frm_StudentInserted(School.BLL.StudentDto studentDto)

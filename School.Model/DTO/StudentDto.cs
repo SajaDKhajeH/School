@@ -7,7 +7,7 @@ using System.Reflection;
 using System.Text;
 using System.Threading.Tasks;
 
-namespace School.BLL
+namespace School.Model.DTO
 {
     public class StudentDto : BaseValidation
     {
