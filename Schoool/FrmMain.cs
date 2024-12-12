@@ -17,7 +17,18 @@ namespace Schoool
         public FrmMain()
         {
             InitializeComponent();
+            System.Timers.Timer t = new System.Timers.Timer();
+            //System.Threading.Timer timer = new System.Threading.    
+            t.Interval = 1000;
+            t.Elapsed += T_Elapsed;
+            t.Start();
         }
+
+        private void T_Elapsed(object sender, System.Timers.ElapsedEventArgs e)
+        {
+         
+        }
+
         private void FrmMain_Load(object sender, EventArgs e)
         {
         }
@@ -33,6 +44,10 @@ namespace Schoool
         private void btnLessons_Click(object sender, EventArgs e)
         {
             new FrmLessons().Show();
+        }
+        private void timer1_Tick(object sender, EventArgs e)
+        {
+           
         }
     }
 }

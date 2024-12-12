@@ -8,11 +8,12 @@ using System.Collections.Generic;
 using System.Data.SqlClient;
 using System.Linq;
 using System.Text;
+using System.Threading;
 using System.Threading.Tasks;
 
 namespace School.BLL
 {
-    public class StudentService
+    public class StudentService : IDisposable
     {
         StudentRepository studentRepository;
         public StudentService()
@@ -21,21 +22,22 @@ namespace School.BLL
         }
         public OperationResult Insert(CreateStudentModel studentDto)
         {
-            if (!studentDto.IsValid)
-            {
-                return new OperationResult
-                {
-                    Message = studentDto.ErrorMessage
-                };
-            }
-            var existsMobile = studentRepository.CheckMobileExists(studentDto.Mobile);
-            if (existsMobile)
-            {
-                return new OperationResult
-                {
-                    Message = "شماره موبایل تکراری است"
-                };
-            }
+            Thread.Sleep(TimeSpan.FromSeconds(3));
+            //if (!studentDto.IsValid)
+            //{
+            //    return new OperationResult
+            //    {
+            //        Message = studentDto.ErrorMessage
+            //    };
+            //}
+            //var existsMobile = studentRepository.CheckMobileExists(studentDto.Mobile);
+            //if (existsMobile)
+            //{
+            //    return new OperationResult
+            //    {
+            //        Message = "شماره موبایل تکراری است"
+            //    };
+            //}
             var student = new Student
             {
                 FirstName = studentDto.FirstName,
@@ -56,5 +58,12 @@ namespace School.BLL
             studentRepository.Delete(id);
             return new OperationResult { Success = true };
         }
+
+        public void Dispose()
+        {
+            studentRepository.Dispose();
+        }
+
+        
     }
 }

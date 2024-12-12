@@ -1,8 +1,9 @@
-﻿using System.ComponentModel.DataAnnotations;
+﻿using System;
+using System.ComponentModel.DataAnnotations;
 
 namespace School.Model.DTO
 {
-    public class CreateStudentModel : BaseValidation
+    public class CreateStudentModel : BaseValidation, ICloneable
     {
         [Required(ErrorMessage = "نام اجباری است")]
         [MinLength(1, ErrorMessage = "حداقل یک کارکتر")]
@@ -14,5 +15,10 @@ namespace School.Model.DTO
         public string LastName { get; set; }
         [MobileValidation]
         public string Mobile { get; set; }
+
+        public object Clone()
+        {
+            return MemberwiseClone();
+        }
     }
 }

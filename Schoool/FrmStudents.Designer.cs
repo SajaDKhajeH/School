@@ -29,14 +29,15 @@
         private void InitializeComponent()
         {
             this.dataGridView1 = new System.Windows.Forms.DataGridView();
-            this.panel1 = new System.Windows.Forms.Panel();
-            this.button1 = new System.Windows.Forms.Button();
-            this.label1 = new System.Windows.Forms.Label();
-            this.txtSearch = new System.Windows.Forms.TextBox();
             this.Id = new System.Windows.Forms.DataGridViewTextBoxColumn();
             this.FullName = new System.Windows.Forms.DataGridViewTextBoxColumn();
             this.Mobile = new System.Windows.Forms.DataGridViewTextBoxColumn();
             this.ColDelete = new System.Windows.Forms.DataGridViewButtonColumn();
+            this.panel1 = new System.Windows.Forms.Panel();
+            this.button1 = new System.Windows.Forms.Button();
+            this.label1 = new System.Windows.Forms.Label();
+            this.txtSearch = new System.Windows.Forms.TextBox();
+            this.lblPlsWait = new System.Windows.Forms.Label();
             ((System.ComponentModel.ISupportInitialize)(this.dataGridView1)).BeginInit();
             this.panel1.SuspendLayout();
             this.SuspendLayout();
@@ -62,6 +63,42 @@
             this.dataGridView1.Size = new System.Drawing.Size(1067, 459);
             this.dataGridView1.TabIndex = 0;
             this.dataGridView1.CellContentClick += new System.Windows.Forms.DataGridViewCellEventHandler(this.dataGridView1_CellContentClick);
+            // 
+            // Id
+            // 
+            this.Id.DataPropertyName = "Id";
+            this.Id.HeaderText = "Id";
+            this.Id.MinimumWidth = 6;
+            this.Id.Name = "Id";
+            this.Id.ReadOnly = true;
+            this.Id.Visible = false;
+            this.Id.Width = 125;
+            // 
+            // FullName
+            // 
+            this.FullName.DataPropertyName = "FullName";
+            this.FullName.HeaderText = "نام و نام خانوادگی";
+            this.FullName.MinimumWidth = 6;
+            this.FullName.Name = "FullName";
+            this.FullName.ReadOnly = true;
+            this.FullName.Width = 125;
+            // 
+            // Mobile
+            // 
+            this.Mobile.DataPropertyName = "Mobile";
+            this.Mobile.HeaderText = "شماره موبایل";
+            this.Mobile.MinimumWidth = 6;
+            this.Mobile.Name = "Mobile";
+            this.Mobile.ReadOnly = true;
+            this.Mobile.Width = 125;
+            // 
+            // ColDelete
+            // 
+            this.ColDelete.HeaderText = "حذف";
+            this.ColDelete.MinimumWidth = 6;
+            this.ColDelete.Name = "ColDelete";
+            this.ColDelete.ReadOnly = true;
+            this.ColDelete.Width = 125;
             // 
             // panel1
             // 
@@ -105,41 +142,15 @@
             this.txtSearch.TabIndex = 0;
             this.txtSearch.TextChanged += new System.EventHandler(this.txtSearch_TextChanged);
             // 
-            // Id
+            // lblPlsWait
             // 
-            this.Id.DataPropertyName = "Id";
-            this.Id.HeaderText = "Id";
-            this.Id.MinimumWidth = 6;
-            this.Id.Name = "Id";
-            this.Id.ReadOnly = true;
-            this.Id.Visible = false;
-            this.Id.Width = 125;
-            // 
-            // FullName
-            // 
-            this.FullName.DataPropertyName = "FullName";
-            this.FullName.HeaderText = "نام و نام خانوادگی";
-            this.FullName.MinimumWidth = 6;
-            this.FullName.Name = "FullName";
-            this.FullName.ReadOnly = true;
-            this.FullName.Width = 125;
-            // 
-            // Mobile
-            // 
-            this.Mobile.DataPropertyName = "Mobile";
-            this.Mobile.HeaderText = "شماره موبایل";
-            this.Mobile.MinimumWidth = 6;
-            this.Mobile.Name = "Mobile";
-            this.Mobile.ReadOnly = true;
-            this.Mobile.Width = 125;
-            // 
-            // ColDelete
-            // 
-            this.ColDelete.HeaderText = "حذف";
-            this.ColDelete.MinimumWidth = 6;
-            this.ColDelete.Name = "ColDelete";
-            this.ColDelete.ReadOnly = true;
-            this.ColDelete.Width = 125;
+            this.lblPlsWait.Dock = System.Windows.Forms.DockStyle.Fill;
+            this.lblPlsWait.Location = new System.Drawing.Point(0, 0);
+            this.lblPlsWait.Name = "lblPlsWait";
+            this.lblPlsWait.Size = new System.Drawing.Size(1067, 554);
+            this.lblPlsWait.TabIndex = 2;
+            this.lblPlsWait.Text = "لطفا منتظر بمانید ...";
+            this.lblPlsWait.TextAlign = System.Drawing.ContentAlignment.MiddleCenter;
             // 
             // FrmStudents
             // 
@@ -148,6 +159,7 @@
             this.ClientSize = new System.Drawing.Size(1067, 554);
             this.Controls.Add(this.dataGridView1);
             this.Controls.Add(this.panel1);
+            this.Controls.Add(this.lblPlsWait);
             this.Margin = new System.Windows.Forms.Padding(4);
             this.Name = "FrmStudents";
             this.Text = "FrmStudents";
@@ -170,5 +182,6 @@
         private System.Windows.Forms.DataGridViewTextBoxColumn FullName;
         private System.Windows.Forms.DataGridViewTextBoxColumn Mobile;
         private System.Windows.Forms.DataGridViewButtonColumn ColDelete;
+        private System.Windows.Forms.Label lblPlsWait;
     }
 }

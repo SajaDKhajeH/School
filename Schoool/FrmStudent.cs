@@ -4,9 +4,11 @@ using System;
 using System.Collections.Generic;
 using System.ComponentModel;
 using System.Data;
+using System.Diagnostics;
 using System.Drawing;
 using System.Linq;
 using System.Text;
+using System.Threading;
 using System.Threading.Tasks;
 using System.Windows.Forms;
 
@@ -16,28 +18,63 @@ namespace Schoool
     {
         //public delegate void StudentInsertedHandler(StudentDto studentDto);
         public event EventHandler StudentInserted;
-        public event Action<CreateStudentModel,int> StudentUpdated;
+        public event Action<CreateStudentModel, int> StudentUpdated;
         public Action OnStudentInserted;
         public FrmStudent()
         {
             InitializeComponent();
         }
 
-        private void btnSubmit_Click(object sender, EventArgs e)
+        private async void btnSubmit_Click(object sender, EventArgs e)
         {
-            StudentService st = new StudentService();
-            var data = new CreateStudentModel
+
+            var child1 = new CreateStudentModel
             {
                 FirstName = txtName.Text,
                 Mobile = txtMobile.Text,
                 LastName = txtLastName.Text
             };
-            var result = st.Insert(data);
+            btnSubmit.Text = "pls wait";
+            btnSubmit.Enabled = false;
+            Stopwatch sw = Stopwatch.StartNew();
+            //Thread th = new Thread(new ThreadStart(() =>
+            //  {
+            //      sw.Stop();
+            //      Console.WriteLine(sw.ElapsedMilliseconds);
+            //      using (StudentService st = new StudentService())
+            //      {
+            //          var result = st.Insert(child1);
+            //          Invoke(new Action(() =>
+            //          {
+            //              if (result.Success)
+            //              {
+            //                  OnStudentInserted();
+            //              }
+            //              ShowToast(result.Message, result.Success);
+            //              btnSubmit.Text = "submit";
+            //              btnSubmit.Enabled = true;
+            //          }));
+
+            //      }
+            //  }));
+            //th.Start();
+
+            var result = await Task.Run(() =>
+            {
+                sw.Stop();
+                Console.WriteLine(sw.ElapsedMilliseconds);
+                using (StudentService st = new StudentService())
+                {
+                    return st.Insert(child1);
+                }
+            });
             if (result.Success)
             {
                 OnStudentInserted();
             }
             ShowToast(result.Message, result.Success);
+            btnSubmit.Text = "submit";
+            btnSubmit.Enabled = true;
         }
 
 

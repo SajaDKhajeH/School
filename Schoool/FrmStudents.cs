@@ -22,35 +22,56 @@ namespace Schoool
             dataGridView1.AutoGenerateColumns = false;
         }
 
-        private void FrmStudents_Load(object sender, EventArgs e)
+        private async void FrmStudents_Load(object sender, EventArgs e)
         {
-            FillDGV();
+            ShowProgress(true);
+            await FillDGVAsync();
+            ShowProgress(false);
         }
 
-        private void FillDGV()
+        private void ShowProgress(bool showProgress)
         {
-            StudentService st = new StudentService();
-            dataGridView1.DataSource = st.GetData();
+            panel1.Visible = showProgress;
 
+            if (showProgress)
+            {
+                lblPlsWait.BringToFront();
+            }
+            else
+            {
+                lblPlsWait.SendToBack();
+            }
         }
 
+        private async Task FillDGVAsync()
+        {
+            var items = await Task.Run(() =>
+            {
+                StudentService st = new StudentService();
+                var data = st.GetData();
+                return data;
+            });
+            dataGridView1.DataSource = items;
+        }
         private void button1_Click(object sender, EventArgs e)
         {
             FrmStudent frm = new FrmStudent();
             frm.StudentInserted += Frm_StudentInserted;
-            frm.OnStudentInserted = FillDGV;
+
+            frm.OnStudentInserted = () => { FillDGVAsync(); };
+
             frm.ShowDialog();
-            FillDGV();
+            FillDGVAsync();
         }
         private void Frm_StudentInserted(object sender, EventArgs e)
         {
-            FillDGV();
+            FillDGVAsync();
         }
 
 
         private void txtSearch_TextChanged(object sender, EventArgs e)
         {
-            FillDGV();
+            FillDGVAsync();
         }
 
         private void dataGridView1_CellContentClick(object sender, DataGridViewCellEventArgs e)
@@ -64,7 +85,7 @@ namespace Schoool
                     var result = service.Delete(id);
                     if (result.Success)
                     {
-                        FillDGV();
+                        FillDGVAsync();
                     }
                     else
                     {

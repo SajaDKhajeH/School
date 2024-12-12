@@ -9,7 +9,7 @@ using System.Threading.Tasks;
 
 namespace School.DataAccess
 {
-    public class StudentRepository
+    public class StudentRepository : IDisposable
     {
         SchoolDataContext db = new SchoolDataContext();
         public void Insert(Student student)
@@ -40,6 +40,11 @@ namespace School.DataAccess
             student.Deleted = true;
             student.DeleteTime = DateTime.Now;
             db.SaveChanges();
+        }
+
+        public void Dispose()
+        {
+            db.Dispose();
         }
     }
 }
