@@ -53,14 +53,13 @@
             this.Mobile,
             this.ColDelete});
             this.dataGridView1.Dock = System.Windows.Forms.DockStyle.Fill;
-            this.dataGridView1.Location = new System.Drawing.Point(0, 95);
-            this.dataGridView1.Margin = new System.Windows.Forms.Padding(4);
+            this.dataGridView1.Location = new System.Drawing.Point(0, 77);
             this.dataGridView1.MultiSelect = false;
             this.dataGridView1.Name = "dataGridView1";
             this.dataGridView1.ReadOnly = true;
             this.dataGridView1.RowHeadersWidth = 51;
             this.dataGridView1.SelectionMode = System.Windows.Forms.DataGridViewSelectionMode.FullRowSelect;
-            this.dataGridView1.Size = new System.Drawing.Size(1067, 459);
+            this.dataGridView1.Size = new System.Drawing.Size(800, 373);
             this.dataGridView1.TabIndex = 0;
             this.dataGridView1.CellContentClick += new System.Windows.Forms.DataGridViewCellEventHandler(this.dataGridView1_CellContentClick);
             // 
@@ -107,17 +106,15 @@
             this.panel1.Controls.Add(this.txtSearch);
             this.panel1.Dock = System.Windows.Forms.DockStyle.Top;
             this.panel1.Location = new System.Drawing.Point(0, 0);
-            this.panel1.Margin = new System.Windows.Forms.Padding(4);
             this.panel1.Name = "panel1";
-            this.panel1.Size = new System.Drawing.Size(1067, 95);
+            this.panel1.Size = new System.Drawing.Size(800, 77);
             this.panel1.TabIndex = 1;
             // 
             // button1
             // 
-            this.button1.Location = new System.Drawing.Point(53, 15);
-            this.button1.Margin = new System.Windows.Forms.Padding(4);
+            this.button1.Location = new System.Drawing.Point(40, 12);
             this.button1.Name = "button1";
-            this.button1.Size = new System.Drawing.Size(73, 63);
+            this.button1.Size = new System.Drawing.Size(55, 51);
             this.button1.TabIndex = 2;
             this.button1.Text = "+";
             this.button1.UseVisualStyleBackColor = true;
@@ -126,19 +123,17 @@
             // label1
             // 
             this.label1.AutoSize = true;
-            this.label1.Location = new System.Drawing.Point(921, 37);
-            this.label1.Margin = new System.Windows.Forms.Padding(4, 0, 4, 0);
+            this.label1.Location = new System.Drawing.Point(691, 30);
             this.label1.Name = "label1";
-            this.label1.Size = new System.Drawing.Size(42, 16);
+            this.label1.Size = new System.Drawing.Size(40, 13);
             this.label1.TabIndex = 1;
             this.label1.Text = "جستجو";
             // 
             // txtSearch
             // 
-            this.txtSearch.Location = new System.Drawing.Point(780, 33);
-            this.txtSearch.Margin = new System.Windows.Forms.Padding(4);
+            this.txtSearch.Location = new System.Drawing.Point(585, 27);
             this.txtSearch.Name = "txtSearch";
-            this.txtSearch.Size = new System.Drawing.Size(132, 22);
+            this.txtSearch.Size = new System.Drawing.Size(100, 20);
             this.txtSearch.TabIndex = 0;
             this.txtSearch.TextChanged += new System.EventHandler(this.txtSearch_TextChanged);
             // 
@@ -146,23 +141,24 @@
             // 
             this.lblPlsWait.Dock = System.Windows.Forms.DockStyle.Fill;
             this.lblPlsWait.Location = new System.Drawing.Point(0, 0);
+            this.lblPlsWait.Margin = new System.Windows.Forms.Padding(2, 0, 2, 0);
             this.lblPlsWait.Name = "lblPlsWait";
-            this.lblPlsWait.Size = new System.Drawing.Size(1067, 554);
+            this.lblPlsWait.Size = new System.Drawing.Size(800, 450);
             this.lblPlsWait.TabIndex = 2;
             this.lblPlsWait.Text = "لطفا منتظر بمانید ...";
             this.lblPlsWait.TextAlign = System.Drawing.ContentAlignment.MiddleCenter;
             // 
             // FrmStudents
             // 
-            this.AutoScaleDimensions = new System.Drawing.SizeF(8F, 16F);
+            this.AutoScaleDimensions = new System.Drawing.SizeF(6F, 13F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
-            this.ClientSize = new System.Drawing.Size(1067, 554);
+            this.ClientSize = new System.Drawing.Size(800, 450);
             this.Controls.Add(this.dataGridView1);
             this.Controls.Add(this.panel1);
             this.Controls.Add(this.lblPlsWait);
-            this.Margin = new System.Windows.Forms.Padding(4);
             this.Name = "FrmStudents";
             this.Text = "FrmStudents";
+            this.FormClosed += new System.Windows.Forms.FormClosedEventHandler(this.FrmStudents_FormClosed);
             this.Load += new System.EventHandler(this.FrmStudents_Load);
             ((System.ComponentModel.ISupportInitialize)(this.dataGridView1)).EndInit();
             this.panel1.ResumeLayout(false);

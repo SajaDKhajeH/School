@@ -109,6 +109,8 @@
     </Compile>
     <Compile Include="Program.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
+    <Compile Include="SMS.cs" />
+    <Compile Include="SmsModel.cs" />
     <EmbeddedResource Include="FrmLesson.resx">
       <DependentUpon>FrmLesson.cs</DependentUpon>
     </EmbeddedResource>

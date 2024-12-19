@@ -9,6 +9,7 @@ using System.Diagnostics;
 using System.Drawing;
 using System.Linq;
 using System.Text;
+using System.Threading;
 using System.Threading.Tasks;
 using System.Windows.Forms;
 
@@ -16,10 +17,12 @@ namespace Schoool
 {
     public partial class FrmStudents : Form
     {
+        CancellationTokenSource ts;
         public FrmStudents()
         {
             InitializeComponent();
             dataGridView1.AutoGenerateColumns = false;
+            ts = new CancellationTokenSource();
         }
 
         private async void FrmStudents_Load(object sender, EventArgs e)
@@ -42,16 +45,16 @@ namespace Schoool
                 lblPlsWait.SendToBack();
             }
         }
-
         private async Task FillDGVAsync()
         {
-            var items = await Task.Run(() =>
+            var a = await Task.Run(async () =>
             {
                 StudentService st = new StudentService();
-                var data = st.GetData();
-                return data;
+                var items = await st.GetDataAsync(ts.Token);
+                return items;
             });
-            dataGridView1.DataSource = items;
+            if (dataGridView1.Created)
+                dataGridView1.DataSource = a;
         }
         private void button1_Click(object sender, EventArgs e)
         {
@@ -93,6 +96,11 @@ namespace Schoool
                     }
                 }
             }
+        }
+
+        private void FrmStudents_FormClosed(object sender, FormClosedEventArgs e)
+        {
+            ts.Cancel();
         }
     }
 }

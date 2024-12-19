@@ -3,8 +3,10 @@ using School.Model.Entities;
 using School.Model.Student;
 using System;
 using System.Collections.Generic;
+using System.Data.Entity;
 using System.Linq;
 using System.Text;
+using System.Threading;
 using System.Threading.Tasks;
 
 namespace School.DataAccess
@@ -23,15 +25,27 @@ namespace School.DataAccess
             return db.Students.Where(x => x.Deleted == false && x.Mobile == mobile).Any();
         }
 
-        public List<StudentVM> GetData()
+        public async Task<List<StudentVM>> GetDataAsync(CancellationToken token)
         {
-            return db.Students.Where(x => x.Deleted == false).Select(x => new StudentVM
+            try
             {
-                FirstName = x.FirstName,
-                Id = x.Id,
-                LastName = x.LastName,
-                Mobile = x.Mobile
-            }).ToList();
+                var a = db.Students.Where(x => x.Deleted == false).Select(x => new StudentVM
+                {
+                    FirstName = x.FirstName,
+                    Id = x.Id,
+                    LastName = x.LastName,
+                    Mobile = x.Mobile
+                }).ToListAsync(token);
+                return await a;
+            }
+            catch (OperationCanceledException ex)
+            {
+                return new List<StudentVM>();
+            }
+            catch (Exception ex)
+            {
+                return new List<StudentVM>();
+            }
         }
 
         public void Delete(int id)

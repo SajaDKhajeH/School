@@ -48,9 +48,10 @@ namespace School.BLL
             studentRepository.Insert(student);
             return new OperationResult { Success = true };
         }
-        public List<StudentVM> GetData()
+        public  async Task<List<StudentVM>> GetDataAsync(CancellationToken token)
         {
-            return studentRepository.GetData();
+            var t = await  studentRepository.GetDataAsync(token);
+            return t;
         }
 
         public OperationResult Delete(int id)
