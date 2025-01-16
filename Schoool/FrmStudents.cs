@@ -1,5 +1,7 @@
-﻿using School.BLL;
+﻿using Newtonsoft.Json;
+using School.BLL;
 using School.DataAccess;
+using School.Model;
 using System;
 using System.Collections.Generic;
 using System.ComponentModel;
@@ -8,6 +10,7 @@ using System.Data.SqlClient;
 using System.Diagnostics;
 using System.Drawing;
 using System.Linq;
+using System.Net.Http;
 using System.Text;
 using System.Threading.Tasks;
 using System.Windows.Forms;
@@ -45,13 +48,32 @@ namespace Schoool
 
         private async Task FillDGVAsync()
         {
-            var items = await Task.Run(() =>
+            //var items = await Task.Run(() =>
+            //{
+            //    StudentService st = new StudentService();
+            //    var data = st.GetData();
+            //    return data;
+            //});
+            HttpClient client = new HttpClient();
+            var response = await client.GetAsync("https://localhost:7081/Student");
+            if (response.IsSuccessStatusCode)
             {
-                StudentService st = new StudentService();
-                var data = st.GetData();
-                return data;
-            });
-            dataGridView1.DataSource = items;
+                var content = await response.Content.ReadAsStringAsync();
+                var res = JsonConvert.DeserializeObject<OperationResult<ApiStudentResponse[]>>(content);
+                if (res.Success)
+                {
+                    dataGridView1.DataSource = res.Data;
+                }
+                else
+                {
+                    MessageBox.Show(res.Message);
+                }
+            }
+            else
+            {
+                MessageBox.Show(response.StatusCode.ToString());
+            }
+
         }
         private void button1_Click(object sender, EventArgs e)
         {

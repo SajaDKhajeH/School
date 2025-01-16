@@ -42,7 +42,9 @@
     <Reference Include="System.Xml" />
   </ItemGroup>
   <ItemGroup>
+    <Compile Include="ApiStudentResponse.cs" />
     <Compile Include="BaseValidation.cs" />
+    <Compile Include="ChatModel.cs" />
     <Compile Include="Entities\Class.cs" />
     <Compile Include="Entities\Lesson.cs" />
     <Compile Include="Entities\Register.cs" />

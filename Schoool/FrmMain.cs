@@ -49,5 +49,10 @@ namespace Schoool
         {
            
         }
+
+        private void chats_Click(object sender, EventArgs e)
+        {
+            new FrmContact().Show();
+        }
     }
 }
