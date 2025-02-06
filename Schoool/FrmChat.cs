@@ -16,11 +16,20 @@ namespace Schoool
     public partial class FrmChat : Form
     {
         int studentId;
+        MySignalrClient sClient;
         public FrmChat(int id)
         {
             InitializeComponent();
             studentId = id;
+            sClient = new  MySignalrClient(id);
+            sClient.OnMessageRecive += SClient_OnMessageRecive;
         }
+
+        private void SClient_OnMessageRecive(int userId, string msg)
+        {
+            RefreshData();
+        }
+
         ApiStudentResponse student;
         private async void button1_Click(object sender, EventArgs e)
         {
@@ -44,6 +53,7 @@ namespace Schoool
                 var res = JsonConvert.DeserializeObject<OperationResult>(content);
                 if (res.Success)
                 {
+                    sClient.Send(cmbTo.SelectedIndex + 1, txtText.Text);
                     RefreshData();
                 }
                 else
@@ -102,6 +112,7 @@ namespace Schoool
 
         private async void FrmChat_Load(object sender, EventArgs e)
         {
+            sClient.Connect();
             await GetStudentInfoAsync();
             RefreshData();
         }
