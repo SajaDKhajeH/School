@@ -54,5 +54,11 @@ namespace Schoool
         {
             new FrmContact().Show();
         }
+
+        private void button2_Click(object sender, EventArgs e)
+        {
+            new FrmTestReport().Show();
+            
+        }
     }
 }
