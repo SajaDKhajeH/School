@@ -9,7 +9,7 @@ using System.Threading.Tasks;
 
 namespace School.DataAccess
 {
-    public class StudentRepository : IDisposable
+    public class StudentRepository : IClassRepository, IDisposable
     {
         SchoolDataContext db = new SchoolDataContext();
         public void Insert(Student student)

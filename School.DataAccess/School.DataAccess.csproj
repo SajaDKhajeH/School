@@ -54,6 +54,7 @@
     <Compile Include="ClassRepository.cs" />
     <Compile Include="Connections.cs" />
     <Compile Include="ExtentionMethods.cs" />
+    <Compile Include="IClassRepository.cs" />
     <Compile Include="Migrations\202411070529373_InitialCreate.cs" />
     <Compile Include="Migrations\202411070529373_InitialCreate.designer.cs">
       <DependentUpon>202411070529373_InitialCreate.cs</DependentUpon>

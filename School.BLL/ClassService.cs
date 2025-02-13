@@ -11,15 +11,16 @@ namespace School.BLL
 {
     public class ClassService
     {
-        ClassRepository classRepository;
+        IClassRepository classRepository;
         public ClassService()
         {
             classRepository = new ClassRepository();
         }
         public OperationResult Insert(Class clas)
         {
-            classRepository.Insert(clas);
-            return new OperationResult { Success = true };
+            //classRepository.Insert(clas);
+            //return new OperationResult { Success = true };
+            return new OperationResult();
         }
     }
 }
